@@ -36,4 +36,4 @@ module "store_read" {
 This example reads a value from the parameter store if it exists, with the name `/production/test/master/company`
 
 ### Additional complete working example with variations of how to use the module
-In [/example](file://./example) directory
+In [/example](./example) directory
