@@ -1,6 +1,6 @@
 # terraform-aws-parameter-store
 
-Terraform module for providing READ and WRITE access to the AWS SSM Parameter Store.
+Terraform module for providing read and write access to the AWS SSM Parameter Store.
 
 * [AWS Details on what values can be used](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
 * [AWS API for PutParameter](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PutParameter.html)
