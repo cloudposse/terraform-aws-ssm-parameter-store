@@ -38,6 +38,7 @@ variable "kms_arn" {
 
 variable "enabled" {
   type        = "string"
+  default     = "true"
   description = "When 'true' the resources and data will be created."
 }
 

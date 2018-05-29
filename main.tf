@@ -12,5 +12,5 @@ resource "aws_ssm_parameter" "default" {
   value           = "${lookup(var.parameter_write[count.index], "value")}"
   overwrite       = "${lookup(var.parameter_write[count.index], "overwrite", "false")}"
   allowed_pattern = "${lookup(var.parameter_write[count.index], "allowed_pattern", "")}"
-  tags            = "${module.label.tags}"
+  tags            = "${var.tags}"
 }
