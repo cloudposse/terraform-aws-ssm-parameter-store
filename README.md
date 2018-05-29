@@ -10,7 +10,7 @@ Terraform module for providing read and write access to the AWS SSM Parameter St
 ### Simple Write Parameter Example
 ```hcl
 module "store_write" {
-  source = "./terraform-aws-parameter-store"
+  source = "git::https://github.com/cloudposse/terraform-aws-parameter-store?ref=master"
   parameter_write = [{
   name = "/production/test/master/company"
   value = "Amazon"
@@ -29,7 +29,7 @@ This example creates a new `String` parameter called `/production/test/master/co
 ### Simple Read Parameter Example
 ```hcl
 module "store_read" {
-  source = "./terraform-aws-parameter-store"
+  source = "git::https://github.com/cloudposse/terraform-aws-parameter-store?ref=master"
   parameter_read = ["/production/test/master/company"]
 }
 ```
