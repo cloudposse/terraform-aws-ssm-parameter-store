@@ -42,7 +42,7 @@ variable "enabled" {
   description = "When 'true' the resources and data will be created."
 }
 
-variable "delimiter" {
+variable "split_delimiter" {
   type        = "string"
   default     = "~^~"
   description = "A delimiter for splitting and joining lists together for normalising the output"
