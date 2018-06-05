@@ -1,22 +1,21 @@
 variable "parameter_read" {
-  description = <<DESC
-  A list of parameters to read. These must already exist otherwise an error is given."
-  Can be used with `parameter_write` as long as the parameters are different.
-DESC
-
-  default = []
+  type        = "list"
+  description = "A list of parameters to read. These must already exist otherwise an error is returned. Can be used with `parameter_write` as long as the parameters are different."
+  default     = []
 }
 
 variable "parameter_write" {
+  type = "list"
+
   description = <<DESC
   List of Maps with the Parameter values in this format.
   Parameter Write Format Example
 
   [{
-    name = "/${var.namespace}/${var.stage}/${var.name}/database/master_password" // Required
+    name = "/cp/prod/app/database/master_password" // Required
     type = "SecureString" // Required - Valid types are String, StringList and SecureString
-    value = "${var.master_password}" // Required
-    description = "Database master password" // Optional
+    value = "password1" // Required
+    description = "Production database master password" // Optional
     overwrite = false // Optional - Force Overwrite of value if true. 
   }]
 DESC
