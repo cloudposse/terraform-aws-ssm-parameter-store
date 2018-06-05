@@ -1,4 +1,4 @@
-## terraform-aws-parameter-store [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-parameter-store.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-parameter-store)
+## terraform-aws-ssm-parameter-store [![Build Status](https://travis-ci.org/cloudposse/terraform-aws-ssm-parameter-store.svg?branch=master)](https://travis-ci.org/cloudposse/terraform-aws-ssm-parameter-store)
 
 Terraform module for providing read and write access to the AWS SSM Parameter Store.
 
@@ -16,7 +16,7 @@ This example creates a new `String` parameter called `/cp/prod/app/database/mast
 
 ```hcl
 module "store_write" {
-  source          = "git::https://github.com/cloudposse/terraform-aws-parameter-store?ref=master"
+  source          = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
   parameter_write = [{
   name            = "/cp/prod/app/database/master_password"
   value           = "password1"
@@ -37,7 +37,7 @@ This example reads a value from the parameter store with the name `/cp/prod/app/
 
 ```hcl
 module "store_read" {
-  source         = "git::https://github.com/cloudposse/terraform-aws-parameter-store?ref=master"
+  source         = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
   parameter_read = ["/cp/prod/app/database/master_password"]
 }
 ```
@@ -51,18 +51,20 @@ The [`example`](./example) directory contains complete working examples with var
 
 **Got a question?**
 
-File a GitHub [issue](https://github.com/cloudposse/terraform-aws-parameter-store/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
+File a GitHub [issue](https://github.com/cloudposse/terraform-aws-ssm-parameter-store/issues), send us an [email](mailto:hello@cloudposse.com) or reach out to us on [Gitter](https://gitter.im/cloudposse/).
 
 
 ## Contributing
 
 ### Bug Reports & Feature Requests
 
-Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-parameter-store/issues) to report any bugs or file feature requests.
+Please use the [issue tracker](https://github.com/cloudposse/terraform-aws-ssm-parameter-store/issues) to report any bugs or file feature requests.
 
 ### Developing
 
-If you are interested in being a contributor and want to get involved in developing `terraform-aws-parameter-store`, we would love to hear from you! Shoot us an [email](mailto:hello@cloudposse.com).
+If you are interested in being a contributor and want to get involved in developing `terraform-aws-ssm-parameter-store`, we would love to hear from you! 
+
+Shoot us an [email](mailto:hello@cloudposse.com).
 
 In general, PRs are welcome. We follow the typical "fork-and-pull" Git workflow.
 
@@ -101,7 +103,7 @@ See [LICENSE](LICENSE) for full details.
 
 ## About
 
-`terraform-aws-parameter-store` is maintained and funded by [Cloud Posse, LLC][website].
+`terraform-aws-ssm-parameter-store` is maintained and funded by [Cloud Posse, LLC][website].
 
 ![Cloud Posse](https://cloudposse.com/logo-300x69.png)
 
