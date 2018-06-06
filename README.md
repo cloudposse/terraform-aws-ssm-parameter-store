@@ -47,6 +47,26 @@ module "store_read" {
 The [`example`](./example) directory contains complete working examples with variations of how to use the module.
 
 
+## Variables
+
+|  Name              |  Default  |  Description                                                                     | Required        |
+|:-------------------|:----------|:---------------------------------------------------------------------------------|:---------------:|
+| parameter_read     | `[]`      | List of parameters to read from SSM                                              | Yes (for read)  |
+| parameter_write    | `[]`      | List of maps with the Parameter values to write to SSM                           | Yes (for write) |
+| tags               | `{}`      | Map containing tags that will be added to the parameters                         | No              |
+| kms_arn            | ``        | The ARN of a KMS key used to encrypt and decrypt SecretString values             | No              |
+| enabled            | `true`    | Set to `false` to prevent the module from creating and accessing any resources   | No              |
+
+
+## Outputs
+
+| Name       | Description                             |
+|:-----------|:----------------------------------------|
+| names      | A list of all of the parameter names    |
+| values     | A list of all of the parameter values   |
+| map        | A map of the names and values created   |
+
+
 ## Help
 
 **Got a question?**
