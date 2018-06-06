@@ -1,6 +1,6 @@
 variable "parameter_read" {
   type        = "list"
-  description = "A list of parameters to read. These must already exist otherwise an error is returned. Can be used with `parameter_write` as long as the parameters are different."
+  description = "List of parameters to read from SSM. These must already exist otherwise an error is returned. Can be used with `parameter_write` as long as the parameters are different."
   default     = []
 }
 
@@ -8,7 +8,7 @@ variable "parameter_write" {
   type = "list"
 
   description = <<DESC
-  List of Maps with the Parameter values in this format.
+  List of maps with the Parameter values in this format.
   Parameter Write Format Example
 
   [{
@@ -26,7 +26,7 @@ DESC
 variable "tags" {
   type        = "map"
   default     = {}
-  description = "A map containing tags that will be added to the parameter"
+  description = "Map containing tags that will be added to the parameters"
 }
 
 variable "kms_arn" {
@@ -38,7 +38,7 @@ variable "kms_arn" {
 variable "enabled" {
   type        = "string"
   default     = "true"
-  description = "When 'true' the resources and data will be created."
+  description = "Set to `false` to prevent the module from creating and accessing any resources"
 }
 
 variable "split_delimiter" {
