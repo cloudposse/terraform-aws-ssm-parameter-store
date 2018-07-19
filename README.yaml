@@ -1,0 +1,99 @@
+---
+#
+# This is the canonical configuration for the `README.md`
+# Run `make readme` to rebuild the `README.md`
+#
+
+# Name of this project
+name: terraform-aws-ssm-parameter-store
+
+# Logo for this project
+#logo: docs/logo.png
+
+# License of this project
+license: "APACHE2"
+
+# Canonical GitHub repo
+github_repo: cloudposse/terraform-aws-ssm-parameter-store
+
+# Badges to display
+badges:
+  - name: "Build Status"
+    image: "https://travis-ci.org/cloudposse/terraform-aws-ssm-parameter-store.svg?branch=master"
+    url: "https://travis-ci.org/cloudposse/terraform-aws-ssm-parameter-store"
+  - name: "Latest Release"
+    image: "https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-store.svg"
+    url: "https://github.com/cloudposse/terraform-aws-ssm-parameter-store/releases/latest"
+  - name: "Slack Community"
+    image: "https://slack.cloudposse.com/badge.svg"
+    url: "https://slack.cloudposse.com"
+
+related:
+  - name: "terraform-aws-ssm-iam-role"
+    description: "Terraform module to provision an IAM role with configurable permissions to access SSM Parameter Store"
+    url: "https://github.com/cloudposse/terraform-aws-ssm-iam-role"
+  - name: "terraform-aws-ssm-parameter-store-policy-documents"
+    description: "A Terraform module that generates JSON documents for access for common AWS SSM Parameter Store policies"
+    url: "https://github.com/cloudposse/terraform-aws-ssm-parameter-store-policy-documents"
+  - name: "terraform-aws-iam-chamber-user"
+    description: "Terraform module to provision a basic IAM chamber user with access to SSM parameters and KMS key to decrypt secrets, suitable for CI/CD systems (e.g. TravisCI, CircleCI, CodeFresh) or systems which are external to AWS that cannot leverage AWS IAM Instance Profiles"
+    url: "https://github.com/cloudposse/terraform-aws-iam-chamber-user"
+
+# Short description of this project
+description: |-
+  Terraform module for providing read and write access to the AWS SSM Parameter Store.
+
+introduction: |-
+  * [AWS Details on what values can be used](https://docs.aws.amazon.com/systems-manager/latest/userguide/sysman-paramstore-su-create.html)
+  * [AWS API for PutParameter](https://docs.aws.amazon.com/systems-manager/latest/APIReference/API_PutParameter.html)
+  * [Terraform aws_ssm_parameter resource page](https://www.terraform.io/docs/providers/aws/r/ssm_parameter.html)
+  * [Terraform aws_ssm_parameter data page](https://www.terraform.io/docs/providers/aws/d/ssm_parameter.html)
+
+# How to use this project
+examples: |-
+  This example creates a new `String` parameter called `/cp/prod/app/database/master_password` with the value of `password1`.
+
+  ```hcl
+  module "store_write" {
+    source          = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
+    parameter_write = [{
+    name            = "/cp/prod/app/database/master_password"
+    value           = "password1"
+    type            = "String"
+    overwrite       = "true"
+    description     = "Production database master password"
+    }]
+
+    tags = {
+      ManagedBy = "Terraform"
+    }
+  }
+  ```
+
+  ### Simple Read Parameter Example
+
+  This example reads a value from the parameter store with the name `/cp/prod/app/database/master_password`
+
+  ```hcl
+  module "store_read" {
+    source         = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
+    parameter_read = ["/cp/prod/app/database/master_password"]
+  }
+  ```
+
+  ### Additional Examples
+
+  The [`example`](./example) directory contains complete working examples with variations of how to use the module.
+
+include:
+  - "docs/targets.md"
+  - "docs/terraform.md"
+
+# Contributors to this project
+contributors:
+  - name: "Erik Osterman"
+    github: "osterman"
+  - name: "Andriy Knysh"
+    github: "aknysh"
+  - name: "Jamie Nelson"
+    github: "Jamie-BitFlight"
