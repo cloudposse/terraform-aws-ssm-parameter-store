@@ -1,4 +1,3 @@
-
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -14,6 +13,7 @@
 
 | Name | Description |
 |------|-------------|
+| arn_map | A map of the names and ARNs created |
 | map | A map of the names and values created |
 | names | A list of all of the parameter names |
 | values | A list of all of the parameter values |
