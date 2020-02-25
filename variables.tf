@@ -5,7 +5,7 @@ variable "parameter_read" {
 }
 
 variable "parameter_write" {
-  type = list(string)
+  type = list(map(string))
 
   description = <<DESC
   List of maps with the Parameter values in this format.
