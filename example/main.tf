@@ -43,5 +43,5 @@ module "store" {
     },
   ]
 
-  kms_arn = "${module.kms_key.key_arn}"
+  kms_arn = module.kms_key.key_arn
 }
