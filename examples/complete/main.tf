@@ -15,7 +15,7 @@ module "kms_key" {
 }
 
 module "store" {
-  source = "../"
+  source = "../../"
 
   tags = {
     ManagedBy = "Terraform"
