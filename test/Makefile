@@ -1,3 +1,4 @@
+SHELL := /bin/bash
 TEST_HARNESS ?= https://github.com/cloudposse/test-harness.git
 TEST_HARNESS_BRANCH ?= master
 TEST_HARNESS_PATH = $(realpath .test-harness)
