@@ -25,14 +25,14 @@ DESC
 }
 
 variable "tags" {
-  type = map(string)
-  default = {}
+  type        = map(string)
+  default     = {}
   description = "Map containing tags that will be added to the parameters"
 }
 
 variable "kms_arn" {
-  type = string
-  default = ""
+  type        = string
+  default     = ""
   description = "The ARN of a KMS key used to encrypt and decrypt SecretString values"
 }
 
@@ -43,8 +43,8 @@ variable "enabled" {
 }
 
 variable "split_delimiter" {
-  type = string
-  default = "~^~"
+  type        = string
+  default     = "~^~"
   description = "A delimiter for splitting and joining lists together for normalising the output"
 }
 
