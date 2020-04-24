@@ -1,7 +1,7 @@
 package test
 
 import (
-	"fmt"
+	"strings"
 	"testing"
 
 	"github.com/gruntwork-io/terratest/modules/terraform"
@@ -15,7 +15,7 @@ func TestExamplesComplete(t *testing.T) {
 	terraformOptions := &terraform.Options{
 		// The path to where our Terraform code is located
 		TerraformDir: "../../examples/complete",
-		Upgrade:      true
+		Upgrade:      true,
 	}
 
 	// At the end of the test, run `terraform destroy` to clean up any resources that were created
@@ -25,8 +25,17 @@ func TestExamplesComplete(t *testing.T) {
 	terraform.InitAndApply(t, terraformOptions)
 
 	// Run `terraform output` to get the value of an output variable
-	map := terraform.Output(t, terraformOptions, "map")
+	output := terraform.Output(t, terraformOptions, "map")
+
+	key1_result := strings.Contains(output, "/production/test/master/company")
+	value1_result := strings.Contains(output, "Amazon")
+	key2_result := strings.Contains(output, "/production/test/master/users")
+	value2_result := strings.Contains(output, "John,Todd")
+
 	// Verify we're getting back the outputs we expect
-	fmt.Println(map)
-	// TODO: Write an assertion against the Terraform Output
+	assert.True(t, key1_result, "The 'map' output should have the master/company key")
+	assert.True(t, value1_result, "The master/company key's value should be 'Amazon'")
+
+	assert.True(t, key2_result, "The 'map' output should have the master/users key")
+	assert.True(t, value2_result, "The master/users key's value should be 'John,Todd'")
 }
