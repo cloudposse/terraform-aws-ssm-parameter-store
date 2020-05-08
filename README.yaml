@@ -18,9 +18,9 @@ github_repo: cloudposse/terraform-aws-ssm-parameter-store
 
 # Badges to display
 badges:
-  - name: "Build Status"
-    image: "https://travis-ci.org/cloudposse/terraform-aws-ssm-parameter-store.svg?branch=master"
-    url: "https://travis-ci.org/cloudposse/terraform-aws-ssm-parameter-store"
+  - name: "Codefresh Build Status"
+    image: "https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ssm-parameter-store?type=cf-1"
+    url: "https://g.codefresh.io/public/accounts/cloudposse/pipelines/new/5eb358c94b3acb84a75e9cbe"
   - name: "Latest Release"
     image: "https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-store.svg"
     url: "https://github.com/cloudposse/terraform-aws-ssm-parameter-store/releases/latest"
@@ -50,27 +50,33 @@ introduction: |-
   * [Terraform aws_ssm_parameter data page](https://www.terraform.io/docs/providers/aws/d/ssm_parameter.html)
 
 # How to use this project
-examples: |-
+usage: |-
+
+  For a complete example, see [examples/complete](examples/complete).
+
+  For automated tests of the complete example using [bats](https://github.com/bats-core/bats-core) and [Terratest](https://github.com/gruntwork-io/terratest) (which tests and deploys the example on AWS), see [test](test).
+
   This example creates a new `String` parameter called `/cp/prod/app/database/master_password` with the value of `password1`.
 
   ```hcl
   module "store_write" {
     source          = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
-    parameter_write = [{
-    name            = "/cp/prod/app/database/master_password"
-    value           = "password1"
-    type            = "String"
-    overwrite       = "true"
-    description     = "Production database master password"
-    }]
+
+    parameter_write = [
+      {
+        name        = "/cp/prod/app/database/master_password"
+        value       = "password1"
+        type        = "String"
+        overwrite   = "true"
+        description = "Production database master password"
+      }
+    ]
 
     tags = {
       ManagedBy = "Terraform"
     }
   }
   ```
-
-  ### Simple Read Parameter Example
 
   This example reads a value from the parameter store with the name `/cp/prod/app/database/master_password`
 
@@ -80,10 +86,6 @@ examples: |-
     parameter_read = ["/cp/prod/app/database/master_password"]
   }
   ```
-
-  ### Additional Examples
-
-  The [`example`](./example) directory contains complete working examples with variations of how to use the module.
 
 include:
   - "docs/targets.md"
@@ -97,3 +99,5 @@ contributors:
     github: "aknysh"
   - name: "Jamie Nelson"
     github: "Jamie-BitFlight"
+  - name: "Matt Gowie"
+    github: "Gowiem"
