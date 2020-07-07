@@ -42,7 +42,7 @@
 
 [![Cloud Posse][logo]](https://cpco.io/homepage)
 
-# terraform-aws-ssm-parameter-store [![Codefresh Build Status](https://g.codefresh.io/api/badges/pipeline/cloudposse/terraform-modules%2Fterraform-aws-ssm-parameter-store?type=cf-1)](https://g.codefresh.io/public/accounts/cloudposse/pipelines/new/5eb358c94b3acb84a75e9cbe) [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-store.svg)](https://github.com/cloudposse/terraform-aws-ssm-parameter-store/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
+# terraform-aws-ssm-parameter-store [![Latest Release](https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-store.svg)](https://github.com/cloudposse/terraform-aws-ssm-parameter-store/releases/latest) [![Slack Community](https://slack.cloudposse.com/badge.svg)](https://slack.cloudposse.com)
 
 
 Terraform module for providing read and write access to the AWS SSM Parameter Store.
@@ -143,22 +143,38 @@ Available targets:
   lint                                Lint terraform code
 
 ```
+## Requirements
+
+| Name | Version |
+|------|---------|
+| terraform | ~> 0.12.0 |
+| aws | ~> 2.0 |
+| local | ~> 1.2 |
+| null | ~> 2.0 |
+| template | ~> 2.0 |
+
+## Providers
+
+| Name | Version |
+|------|---------|
+| aws | ~> 2.0 |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
-|------|-------------|:----:|:-----:|:-----:|
-| enabled | Set to `false` to prevent the module from creating and accessing any resources | bool | `true` | no |
-| kms_arn | The ARN of a KMS key used to encrypt and decrypt SecretString values | string | `` | no |
-| parameter_read | List of parameters to read from SSM. These must already exist otherwise an error is returned. Can be used with `parameter_write` as long as the parameters are different. | list(string) | `<list>` | no |
-| parameter_write | List of maps with the parameter values to write to SSM Parameter Store | list(map(string)) | `<list>` | no |
-| split_delimiter | A delimiter for splitting and joining lists together for normalising the output | string | `~^~` | no |
-| tags | Map containing tags that will be added to the parameters | map(string) | `<map>` | no |
+|------|-------------|------|---------|:--------:|
+| enabled | Set to `false` to prevent the module from creating and accessing any resources | `bool` | `true` | no |
+| kms\_arn | The ARN of a KMS key used to encrypt and decrypt SecretString values | `string` | `""` | no |
+| parameter\_read | List of parameters to read from SSM. These must already exist otherwise an error is returned. Can be used with `parameter_write` as long as the parameters are different. | `list(string)` | `[]` | no |
+| parameter\_write | List of maps with the parameter values to write to SSM Parameter Store | `list(map(string))` | `[]` | no |
+| split\_delimiter | A delimiter for splitting and joining lists together for normalising the output | `string` | `"~^~"` | no |
+| tags | Map containing tags that will be added to the parameters | `map(string)` | `{}` | no |
 
 ## Outputs
 
 | Name | Description |
 |------|-------------|
-| arn_map | A map of the names and ARNs created |
+| arn\_map | A map of the names and ARNs created |
 | map | A map of the names and values created |
 | names | A list of all of the parameter names |
 | values | A list of all of the parameter values |
