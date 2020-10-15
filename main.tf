@@ -1,23 +1,22 @@
+locals {
+  parameter_write = var.enabled ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
+}
+
 data "aws_ssm_parameter" "read" {
   count = var.enabled ? length(var.parameter_read) : 0
   name  = element(var.parameter_read, count.index)
 }
 
 resource "aws_ssm_parameter" "default" {
-  count = var.enabled ? length(var.parameter_write) : 0
-  name  = tolist(var.parameter_write)[count.index]["name"]
+  for_each = local.parameter_write
+  name     = each.key
 
-  description = lookup(
-    tolist(var.parameter_write)[count.index],
-    "description",
-    tolist(var.parameter_write)[count.index]["name"]
-  )
-
-  type            = lookup(tolist(var.parameter_write)[count.index], "type", "SecureString")
-  tier            = lookup(var.parameter_write[count.index], "tier", "Standard")
-  key_id          = lookup(tolist(var.parameter_write)[count.index], "type", "SecureString") == "SecureString" && length(var.kms_arn) > 0 ? var.kms_arn : ""
-  value           = tolist(var.parameter_write)[count.index]["value"]
-  overwrite       = lookup(tolist(var.parameter_write)[count.index], "overwrite", "false")
-  allowed_pattern = lookup(tolist(var.parameter_write)[count.index], "allowed_pattern", "")
+  description     = each.value.description
+  type            = each.value.type
+  tier            = each.value.tier
+  key_id          = each.value.type == "SecureString" && length(var.kms_arn) > 0 ? var.kms_arn : ""
+  value           = each.value.value
+  overwrite       = each.value.overwrite
+  allowed_pattern = each.value.allowed_pattern
   tags            = var.tags
 }
