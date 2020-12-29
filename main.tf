@@ -1,10 +1,10 @@
 data "aws_ssm_parameter" "read" {
-  count = var.enabled ? length(var.parameter_read) : 0
+  count = module.this.enabled ? length(var.parameter_read) : 0
   name  = element(var.parameter_read, count.index)
 }
 
 resource "aws_ssm_parameter" "default" {
-  count = var.enabled ? length(var.parameter_write) : 0
+  count = module.this.enabled ? length(var.parameter_write) : 0
   name  = tolist(var.parameter_write)[count.index]["name"]
 
   description = lookup(
@@ -19,5 +19,5 @@ resource "aws_ssm_parameter" "default" {
   value           = tolist(var.parameter_write)[count.index]["value"]
   overwrite       = lookup(tolist(var.parameter_write)[count.index], "overwrite", "false")
   allowed_pattern = lookup(tolist(var.parameter_write)[count.index], "allowed_pattern", "")
-  tags            = var.tags
+  tags            = module.this.tags
 }
