@@ -10,22 +10,10 @@ variable "parameter_write" {
   default     = []
 }
 
-variable "tags" {
-  type        = map(string)
-  default     = {}
-  description = "Map containing tags that will be added to the parameters"
-}
-
 variable "kms_arn" {
   type        = string
   default     = ""
   description = "The ARN of a KMS key used to encrypt and decrypt SecretString values"
-}
-
-variable "enabled" {
-  type        = bool
-  default     = true
-  description = "Set to `false` to prevent the module from creating and accessing any resources"
 }
 
 variable "split_delimiter" {
