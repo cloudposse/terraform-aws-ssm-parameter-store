@@ -4,7 +4,7 @@ locals {
     concat(
       split(
         var.split_delimiter,
-        join(var.split_delimiter, aws_ssm_parameter.default.*.name)
+        join(var.split_delimiter, [for p in aws_ssm_parameter.default : p.name])
       ),
       split(
         var.split_delimiter,
@@ -17,7 +17,7 @@ locals {
     concat(
       split(
         var.split_delimiter,
-        join(var.split_delimiter, aws_ssm_parameter.default.*.value)
+        join(var.split_delimiter, [for p in aws_ssm_parameter.default : p.value])
       ),
       split(
         var.split_delimiter,
@@ -30,7 +30,7 @@ locals {
     concat(
       split(
         var.split_delimiter,
-        join(var.split_delimiter, aws_ssm_parameter.default.*.arn)
+        join(var.split_delimiter, [for p in aws_ssm_parameter.default : p.arn])
       ),
       split(
         var.split_delimiter,
