@@ -1,5 +1,5 @@
 locals {
-  parameter_write = var.enabled ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
+  parameter_write = module.this.enabled ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
 }
 
 data "aws_ssm_parameter" "read" {
