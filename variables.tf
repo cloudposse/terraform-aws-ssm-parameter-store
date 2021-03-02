@@ -23,7 +23,8 @@ variable "split_delimiter" {
 }
 
 variable "parameter_write_defaults" {
-  type = map(any)
+  type        = map(any)
+  description = "Parameter write default settings"
   default = {
     description     = null
     type            = "SecretString"

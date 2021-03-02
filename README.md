@@ -170,6 +170,19 @@ Available targets:
 |------|---------|
 | aws | >= 2.0 |
 
+## Modules
+
+| Name | Source | Version |
+|------|--------|---------|
+| this | cloudposse/label/null | 0.24.1 |
+
+## Resources
+
+| Name |
+|------|
+| [aws_ssm_parameter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/data-sources/ssm_parameter) |
+| [aws_ssm_parameter](https://registry.terraform.io/providers/hashicorp/aws/latest/docs/resources/ssm_parameter) |
+
 ## Inputs
 
 | Name | Description | Type | Default | Required |
@@ -189,6 +202,7 @@ Available targets:
 | namespace | Namespace, which could be your organization name or abbreviation, e.g. 'eg' or 'cp' | `string` | `null` | no |
 | parameter\_read | List of parameters to read from SSM. These must already exist otherwise an error is returned. Can be used with `parameter_write` as long as the parameters are different. | `list(string)` | `[]` | no |
 | parameter\_write | List of maps with the parameter values to write to SSM Parameter Store | `list(map(string))` | `[]` | no |
+| parameter\_write\_defaults | Parameter write default settings | `map(any)` | <pre>{<br>  "allowed_pattern": "",<br>  "description": null,<br>  "overwrite": "false",<br>  "tier": "Standard",<br>  "type": "SecretString"<br>}</pre> | no |
 | regex\_replace\_chars | Regex to replace chars with empty string in `namespace`, `environment`, `stage` and `name`.<br>If not set, `"/[^a-zA-Z0-9-]/"` is used to remove all characters other than hyphens, letters and digits. | `string` | `null` | no |
 | split\_delimiter | A delimiter for splitting and joining lists together for normalising the output | `string` | `"~^~"` | no |
 | stage | Stage, e.g. 'prod', 'staging', 'dev', OR 'source', 'build', 'test', 'deploy', 'release' | `string` | `null` | no |
@@ -202,7 +216,6 @@ Available targets:
 | map | A map of the names and values created |
 | names | A list of all of the parameter names |
 | values | A list of all of the parameter values |
-
 <!-- markdownlint-restore -->
 
 
