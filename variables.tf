@@ -21,3 +21,15 @@ variable "split_delimiter" {
   default     = "~^~"
   description = "A delimiter for splitting and joining lists together for normalising the output"
 }
+
+variable "parameter_write_defaults" {
+  type        = map(any)
+  description = "Parameter write default settings"
+  default = {
+    description     = null
+    type            = "SecretString"
+    tier            = "Standard"
+    overwrite       = "false"
+    allowed_pattern = ""
+  }
+}
