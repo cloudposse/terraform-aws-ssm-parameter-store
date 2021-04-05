@@ -30,6 +30,6 @@ variable "parameter_write_defaults" {
     type            = "SecretString"
     tier            = "Standard"
     overwrite       = "false"
-    allowed_pattern = ""
+    allowed_pattern = null
   }
 }
