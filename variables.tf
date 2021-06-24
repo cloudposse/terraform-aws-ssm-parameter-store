@@ -16,12 +16,6 @@ variable "kms_arn" {
   description = "The ARN of a KMS key used to encrypt and decrypt SecretString values"
 }
 
-variable "split_delimiter" {
-  type        = string
-  default     = "~^~"
-  description = "A delimiter for splitting and joining lists together for normalising the output"
-}
-
 variable "parameter_write_defaults" {
   type        = map(any)
   description = "Parameter write default settings"

@@ -6,11 +6,13 @@ output "parameter_names" {
 output "parameter_values" {
   description = "List of values"
   value       = module.store.values
+  sensitive   = true
 }
 
 output "map" {
   description = "A map of the names and values created"
   value       = module.store.map
+  sensitive   = true
 }
 
 output "arn_map" {
