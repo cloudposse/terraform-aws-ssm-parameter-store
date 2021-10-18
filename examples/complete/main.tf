@@ -4,7 +4,7 @@ provider "aws" {
 
 module "kms_key" {
   source                  = "cloudposse/kms-key/aws"
-  version                 = "0.9.0"
+  version                 = "0.11.0"
   description             = "terraform-aws-ssm-parameter-store test KMS key"
   deletion_window_in_days = 10
   enable_key_rotation     = true
