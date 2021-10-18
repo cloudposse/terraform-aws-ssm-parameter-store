@@ -109,7 +109,9 @@ This example creates a new `String` parameter called `/cp/prod/app/database/mast
 
 ```hcl
 module "store_write" {
-  source          = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
+  source  = "cloudposse/ssm-parameter-store/aws"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version = "x.x.x"
 
   parameter_write = [
     {
@@ -131,7 +133,10 @@ This example reads a value from the parameter store with the name `/cp/prod/app/
 
 ```hcl
 module "store_read" {
-  source         = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
+  source  = "cloudposse/ssm-parameter-store/aws"
+  # Cloud Posse recommends pinning every module to a specific version
+  # version = "x.x.x"
+
   parameter_read = ["/cp/prod/app/database/master_password"]
 }
 ```
@@ -367,8 +372,8 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
 ### Contributors
 
 <!-- markdownlint-disable -->
-|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Jamie Nelson][Jamie-BitFlight_avatar]][Jamie-BitFlight_homepage]<br/>[Jamie Nelson][Jamie-BitFlight_homepage] | [![Matt Gowie][Gowiem_avatar]][Gowiem_homepage]<br/>[Matt Gowie][Gowiem_homepage] |
-|---|---|---|---|
+|  [![Erik Osterman][osterman_avatar]][osterman_homepage]<br/>[Erik Osterman][osterman_homepage] | [![Andriy Knysh][aknysh_avatar]][aknysh_homepage]<br/>[Andriy Knysh][aknysh_homepage] | [![Jamie Nelson][Jamie-BitFlight_avatar]][Jamie-BitFlight_homepage]<br/>[Jamie Nelson][Jamie-BitFlight_homepage] | [![Matt Gowie][Gowiem_avatar]][Gowiem_homepage]<br/>[Matt Gowie][Gowiem_homepage] | [![Yonatan Koren][korenyoni_avatar]][korenyoni_homepage]<br/>[Yonatan Koren][korenyoni_homepage] |
+|---|---|---|---|---|
 <!-- markdownlint-restore -->
 
   [osterman_homepage]: https://github.com/osterman
@@ -379,6 +384,8 @@ Check out [our other projects][github], [follow us on twitter][twitter], [apply 
   [Jamie-BitFlight_avatar]: https://img.cloudposse.com/150x150/https://github.com/Jamie-BitFlight.png
   [Gowiem_homepage]: https://github.com/Gowiem
   [Gowiem_avatar]: https://img.cloudposse.com/150x150/https://github.com/Gowiem.png
+  [korenyoni_homepage]: https://github.com/korenyoni
+  [korenyoni_avatar]: https://img.cloudposse.com/150x150/https://github.com/korenyoni.png
 
 [![README Footer][readme_footer_img]][readme_footer_link]
 [![Beacon][beacon]][website]
