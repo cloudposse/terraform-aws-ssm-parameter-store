@@ -1,6 +1,6 @@
 # Splitting and joining, and then compacting a list to get a normalised list
 locals {
-  name_list = compact(concat(keys(local.parameter_write), var.parameter_read))
+  name_list = compact(concat(keys(local.parameter_write), local.parameter_read))
 
   value_list = compact(
     concat(

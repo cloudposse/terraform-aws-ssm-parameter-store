@@ -1,10 +1,12 @@
 locals {
-  parameter_write = module.this.enabled ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
+  enabled         = module.this.enabled
+  parameter_write = local.enabled ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
+  parameter_read  = local.enabled ? var.parameter_read : []
 }
 
 data "aws_ssm_parameter" "read" {
-  count = module.this.enabled ? length(var.parameter_read) : 0
-  name  = element(var.parameter_read, count.index)
+  count = length(local.parameter_read)
+  name  = element(local.parameter_read, count.index)
 }
 
 resource "aws_ssm_parameter" "default" {
