@@ -21,5 +21,4 @@ resource "aws_ssm_parameter" "default" {
   overwrite       = each.value.overwrite
   allowed_pattern = each.value.allowed_pattern
   tags            = var.tags
-
 }

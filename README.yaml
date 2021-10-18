@@ -49,7 +49,9 @@ usage: |2-
 
   ```hcl
   module "store_write" {
-    source          = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
+    source  = "cloudposse/ssm-parameter-store/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version = "x.x.x"
 
     parameter_write = [
       {
@@ -71,7 +73,10 @@ usage: |2-
 
   ```hcl
   module "store_read" {
-    source         = "git::https://github.com/cloudposse/terraform-aws-ssm-parameter-store?ref=master"
+    source  = "cloudposse/ssm-parameter-store/aws"
+    # Cloud Posse recommends pinning every module to a specific version
+    # version = "x.x.x"
+
     parameter_read = ["/cp/prod/app/database/master_password"]
   }
   ```
@@ -88,3 +93,5 @@ contributors:
     github: "Jamie-BitFlight"
   - name: "Matt Gowie"
     github: "Gowiem"
+  - name: "Yonatan Koren"
+    github: "korenyoni"
