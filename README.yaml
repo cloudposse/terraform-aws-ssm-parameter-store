@@ -55,11 +55,12 @@ usage: |2-
 
     parameter_write = [
       {
-        name        = "/cp/prod/app/database/master_password"
-        value       = "password1"
-        type        = "String"
-        overwrite   = "true"
-        description = "Production database master password"
+        name           = "/cp/prod/app/database/master_password"
+        value          = "password1"
+        type           = "String"
+        overwrite      = "true"
+        description    = "Production database master password"
+        ignore_changes = "false"
       }
     ]
 
