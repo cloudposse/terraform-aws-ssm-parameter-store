@@ -22,12 +22,7 @@ resource "aws_ssm_parameter" "default" {
   allowed_pattern = each.value.allowed_pattern
   tags            = var.tags
 
-  dynamic "lifecycle" {
-    for_each = each.value.ignore_changes == "true" ? ["ignore_changes"] : []
-    content {
-      ignore_changes = [
-        value
-      ]
-    }
+  lifecycle {
+    ignore_changes = each.value.ignore_changes == "true" ? [value] : []
   }
 }
