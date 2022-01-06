@@ -21,7 +21,7 @@ variable "parameter_write_defaults" {
   description = "Parameter write default settings"
   default = {
     description     = null
-    type            = "SecretString"
+    type            = "SecureString"
     tier            = "Standard"
     overwrite       = "false"
     allowed_pattern = null
