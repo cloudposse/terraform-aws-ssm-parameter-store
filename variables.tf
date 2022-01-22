@@ -25,5 +25,12 @@ variable "parameter_write_defaults" {
     tier            = "Standard"
     overwrite       = "false"
     allowed_pattern = null
+    data_type       = "text"
   }
+}
+
+variable "ignore_value_changes" {
+  type        = bool
+  description = "Whether to ignore future external changes in paramater values"
+  default     = false
 }
