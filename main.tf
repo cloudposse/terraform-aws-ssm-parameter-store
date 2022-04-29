@@ -1,8 +1,13 @@
 locals {
-  enabled                       = module.this.enabled
-  parameter_write               = local.enabled && ! var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
-  parameter_write_ignore_values = local.enabled && var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
-  parameter_read                = local.enabled ? var.parameter_read : []
+  enabled = module.this.enabled
+
+  parameter_write = local.enabled ? {
+    for e in var.parameter_write :
+    e.name => merge(var.parameter_write_defaults, e)
+    if e != {}
+  } : {}
+
+  parameter_read = local.enabled ? var.parameter_read : []
 }
 
 data "aws_ssm_parameter" "read" {
@@ -11,7 +16,7 @@ data "aws_ssm_parameter" "read" {
 }
 
 resource "aws_ssm_parameter" "default" {
-  for_each = local.parameter_write
+  for_each = ! var.ignore_value_changes ? local.parameter_write : {}
   name     = each.key
 
   description     = each.value.description
@@ -27,7 +32,7 @@ resource "aws_ssm_parameter" "default" {
 }
 
 resource "aws_ssm_parameter" "ignore_value_changes" {
-  for_each = local.parameter_write_ignore_values
+  for_each = var.ignore_value_changes ? local.parameter_write : {}
   name     = each.key
 
   description     = each.value.description
