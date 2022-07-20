@@ -18,7 +18,8 @@ resource "aws_ssm_parameter" "default" {
   type            = each.value.type
   tier            = each.value.tier
   key_id          = each.value.type == "SecureString" && length(var.kms_arn) > 0 ? var.kms_arn : ""
-  value           = each.value.value
+  value           = lookup(each.value, "value", null)
+  insecure_value  = lookup(each.value, "insecure_value", null)
   overwrite       = each.value.overwrite
   allowed_pattern = each.value.allowed_pattern
   data_type       = each.value.data_type
@@ -34,7 +35,8 @@ resource "aws_ssm_parameter" "ignore_value_changes" {
   type            = each.value.type
   tier            = each.value.tier
   key_id          = each.value.type == "SecureString" && length(var.kms_arn) > 0 ? var.kms_arn : ""
-  value           = each.value.value
+  value           = lookup(each.value, "value", null)
+  insecure_value  = lookup(each.value, "insecure_value", null)
   overwrite       = each.value.overwrite
   allowed_pattern = each.value.allowed_pattern
   data_type       = each.value.data_type
@@ -44,6 +46,7 @@ resource "aws_ssm_parameter" "ignore_value_changes" {
   lifecycle {
     ignore_changes = [
       value,
+      insecure_value,
     ]
   }
 }
