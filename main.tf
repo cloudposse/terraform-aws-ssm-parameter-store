@@ -1,6 +1,6 @@
 locals {
   enabled                       = module.this.enabled
-  parameter_write               = local.enabled && ! var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
+  parameter_write               = local.enabled && !var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
   parameter_write_ignore_values = local.enabled && var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
   parameter_read                = local.enabled ? var.parameter_read : []
 }
