@@ -19,7 +19,6 @@ resource "aws_ssm_parameter" "default" {
   tier            = each.value.tier
   key_id          = each.value.type == "SecureString" && length(var.kms_arn) > 0 ? var.kms_arn : ""
   value           = each.value.value
-  overwrite       = each.value.overwrite
   allowed_pattern = each.value.allowed_pattern
   data_type       = each.value.data_type
 
