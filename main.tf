@@ -1,6 +1,6 @@
 locals {
   enabled                       = module.this.enabled
-  parameter_write               = local.enabled && ! var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
+  parameter_write               = local.enabled && !var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
   parameter_write_ignore_values = local.enabled && var.ignore_value_changes ? { for e in var.parameter_write : e.name => merge(var.parameter_write_defaults, e) } : {}
   parameter_read                = local.enabled ? var.parameter_read : []
 }
@@ -19,7 +19,6 @@ resource "aws_ssm_parameter" "default" {
   tier            = each.value.tier
   key_id          = each.value.type == "SecureString" && length(var.kms_arn) > 0 ? var.kms_arn : ""
   value           = each.value.value
-  overwrite       = each.value.overwrite
   allowed_pattern = each.value.allowed_pattern
   data_type       = each.value.data_type
 
