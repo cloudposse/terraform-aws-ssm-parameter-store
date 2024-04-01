@@ -1,0 +1,7 @@
+# Upstream changes from _extends are only recognized when modifications are made to this file in the default branch.
+_extends: .github
+repository:
+  name: terraform-aws-ssm-parameter-store
+  description: Terraform module to populate AWS Systems Manager (SSM) Parameter Store with values from Terraform. Works great with Chamber.
+  homepage: https://cloudposse.com/accelerate
+  topics: terraform, terraform-modules, chamber, ssm, kms, secrets-management, secrets
