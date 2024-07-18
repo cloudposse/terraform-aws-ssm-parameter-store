@@ -5,3 +5,4 @@ repository:
   description: Terraform module to populate AWS Systems Manager (SSM) Parameter Store with values from Terraform. Works great with Chamber.
   homepage: https://cloudposse.com/accelerate
   topics: terraform, terraform-modules, chamber, ssm, kms, secrets-management, secrets
+
