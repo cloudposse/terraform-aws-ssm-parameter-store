@@ -3,7 +3,7 @@
 <!-- markdownlint-disable -->
 <a href="https://cpco.io/homepage"><img src="https://github.com/cloudposse/terraform-aws-ssm-parameter-store/blob/main/.github/banner.png?raw=true" alt="Project Banner"/></a><br/>
     <p align="right">
-<a href="https://github.com/cloudposse/terraform-aws-ssm-parameter-store/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-store.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-ssm-parameter-store/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-ssm-parameter-store.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://slack.cloudposse.com"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
+<a href="https://github.com/cloudposse/terraform-aws-ssm-parameter-store/releases/latest"><img src="https://img.shields.io/github/release/cloudposse/terraform-aws-ssm-parameter-store.svg?style=for-the-badge" alt="Latest Release"/></a><a href="https://github.com/cloudposse/terraform-aws-ssm-parameter-store/commits"><img src="https://img.shields.io/github/last-commit/cloudposse/terraform-aws-ssm-parameter-store.svg?style=for-the-badge" alt="Last Updated"/></a><a href="https://cloudposse.com/slack"><img src="https://slack.cloudposse.com/for-the-badge.svg" alt="Slack Community"/></a></p>
 <!-- markdownlint-restore -->
 
 <!--
@@ -53,7 +53,6 @@ Terraform module for providing read and write access to the AWS SSM Parameter St
 
 
 ## Usage
-
 
 For a complete example, see [examples/complete](examples/complete).
 
@@ -108,18 +107,6 @@ module "store_read" {
 
 
 
-<!-- markdownlint-disable -->
-## Makefile Targets
-```text
-Available targets:
-
-  help                                Help screen
-  help/all                            Display help for all targets
-  help/short                          This help short screen
-  lint                                Lint terraform code
-
-```
-<!-- markdownlint-restore -->
 <!-- markdownlint-disable -->
 ## Requirements
 
@@ -185,6 +172,11 @@ Available targets:
 | <a name="output_names"></a> [names](#output\_names) | A list of all of the parameter names |
 | <a name="output_values"></a> [values](#output\_values) | A list of all of the parameter values |
 <!-- markdownlint-restore -->
+
+
+
+
+
 
 
 ## Related Projects
